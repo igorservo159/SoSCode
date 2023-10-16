@@ -43,9 +43,14 @@
                                 <div class="mb-3">
                                     <input type="password" class="form-control" placeholder="Senha">
                                 </div>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Entrar</button>
-                                </div>
+                                <div class="row">
+                                    <div class="d-grid gap-2 col-6">
+                                        <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Entrar</button>
+                                    </div>
+                                    <div class="d-grid gap-2 col-6">
+                                        <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Sign up</button>
+                                    </div>
+                                </div>    
                             </form>
                         </div>
                     </div>
