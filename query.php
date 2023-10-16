@@ -38,17 +38,31 @@
                         </div>
                         <div class="card-body bg-warning-subtle">
                             <div class="card mb-3 bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title">Título do chamado</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                                    <p class="card-text">Descrição do chamado</p>
+                                <div class="row card-body">
+                                    <div class="col-10">
+                                        <h5 class="card-title">Título do chamado</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
+                                        <p class="card-text">Descrição do chamado</p>
+                                    </div>
+                                    <div class="d-grid col-2 gap-1">
+                                        <div class="btn btn-sm btn-info btn-block">Concluir</div>
+                                        <div class="btn btn-sm btn-warning btn-block">Editar</div>
+                                        <div class="btn btn-sm btn-danger btn-block">Deletar</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card mb-3 bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title">Título do chamado</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                                    <p class="card-text">Descrição do chamado</p>
+                                <div class="row card-body">
+                                    <div class="col-10">
+                                        <h5 class="card-title">Título do chamado</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
+                                        <p class="card-text">Descrição do chamado</p>
+                                    </div>
+                                    <div class="d-grid col-2 gap-1">
+                                        <div class="btn btn-sm btn-info btn-block">Concluir</div>
+                                        <div class="btn btn-sm btn-warning btn-block">Editar</div>
+                                        <div class="btn btn-sm btn-danger btn-block">Deletar</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mt-5">
