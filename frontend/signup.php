@@ -38,7 +38,10 @@
                         <div class="card-body bg-warning-subtle">
                             <form>
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="Insira um e-mail">
+                                    <input type="text" class="form-control" placeholder="Digite seu nome">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Digite seu e-mail">
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" class="form-control" placeholder="Crie uma senha">
