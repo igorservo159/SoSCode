@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>SosCode</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.css"> -->
+        <!-- <link rel="stylesheet" href="../../vendor/twbs/bootstrap/dist/css/bootstrap.css"> -->
         <style>
             .card-home{
                 padding: 30px 0 0 0;
@@ -43,7 +43,7 @@
                                         <div class="col d-flex justify-content-center">
                                             <img src="imgs/sos.png" width="70" height="70">
                                         </div>
-                                        <div class="text-center">Abrir chamado</div>
+                                        <div class="text-center">Abrir Ticket</div>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -51,7 +51,7 @@
                                         <div class="col d-flex justify-content-center">
                                             <img src="imgs/search.png" width="70" height="70">
                                         </div>
-                                        <div class="text-center">Consultar chamado</div>
+                                        <div class="text-center">Consultar Ticket</div>
                                     </div>
                                 </div>
                             </div>

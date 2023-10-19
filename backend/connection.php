@@ -3,12 +3,13 @@
 class Connection{
     private $host = 'localhost';
     private $db_name = 'db_sos';
-    private $user = 'igor';
-    private $password = '1234';
+    private $user = 'root';
+    private $password = '';
 
-    private function connect(){
+    public function connect() {
         try {
-            $connection  = new PDO(
+
+            $connection = new PDO(
                 "mysql:host=$this->host;dbname=$this->db_name",
                 "$this->user",
                 "$this->password"
@@ -17,7 +18,7 @@ class Connection{
             return $connection;
             
         } catch (PDOException $error){
-            echo '<p>' .$error->getMessege() . '</p>';
+            echo '<p>' .$error->getMessage() . '</p>';
         }
     }
 }

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>SosCode</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.css"> -->
+        <!-- <link rel="stylesheet" href="../../vendor/twbs/bootstrap/dist/css/bootstrap.css"> -->
         <style>
             .card-open-call{
                 padding: 30px 0 0 0;
@@ -34,39 +34,39 @@
                 <div class="card-open-call">
                     <div class="card">
                         <div class="card-header bg-dark bg-gradient text-light">
-                            Abrir chamado
+                            Novo Ticket
                         </div>
                         <div class="card-body bg-warning-subtle">
                             <div class="row">
                                 <div class="col">
-                                    <form method="post" action="request_controller.php">
+                                    <form method="post" action="ticket_controller.php">
 
                                         <div class="mb-3">
                                             <label class="form-label">Título</label>
-                                            <input name="titulo" type="text" class="form-control"
+                                            <input name="title" type="text" class="form-control"
                                             placeholder="Título">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="categoria" class="form-label">Categoria do problema</label>
-                                            <select name="categoria" class="form-select" id="categoria">
-                                                <option value = "1">Frontend</option>
-                                                <option value = "2">Backend</option>
-                                                <option value = "3">Database</option>
-                                                <option value = "4">Devops</option>
-                                                <option value = "5">Mobile</option>
-                                                <option value = "outro">Outro</option>
+                                            <label for="category" class="form-label">Categoria do Ticket</label>
+                                            <select name="category" class="form-select" id="category">
+                                                <option value = "frontend">Frontend</option>
+                                                <option value = "backend">Backend</option>
+                                                <option value = "database">Database</option>
+                                                <option value = "devops">Devops</option>
+                                                <option value = "mobile">Mobile</option>
+                                                <option value = "other">Outro</option>
                                             </select>
                                         </div>
 
-                                        <div class="mb-3" id="outra-categoria" style="display: none;">
+                                        <div class="mb-3 d-none" id="other-category">
                                             <label class="form-label">Outra Categoria</label>
-                                            <input name="outra_categoria" type="text" class="form-control" placeholder="Outra Categoria">
+                                            <input id="input-other" name="other-category" type="text" class="form-control" placeholder="Outra Categoria">
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Descrição</label>
-                                            <textarea name="descricao" class="form-control" rows="3"></textarea>
+                                            <textarea name="description" class="form-control" rows="3"></textarea>
                                         </div>
 
                                         <div class="row mt-5">
@@ -88,13 +88,17 @@
         </div>
 
         <script>
-            var selectCategoria = document.getElementById("categoria");
-            var inputOutraCategoria = document.getElementById("outra-categoria");
-            selectCategoria.addEventListener("change", function () {
-                if (selectCategoria.value === "outro") {
-                    inputOutraCategoria.style.display = "block";
+            var category = document.getElementById("category");
+            var otherCategory = document.getElementById("other-category");
+            var inputOther = document.getElementById("input-other");
+            category.addEventListener("change", function () {
+                if (category.value === "other") {
+                    otherCategory.classList.remove("d-none");
+                    otherCategory.classList.add("d-block");
                 } else {
-                    inputOutraCategoria.style.display = "none";
+                    otherCategory.classList.remove("d-block");
+                    otherCategory.classList.add("d-none");
+                    inputOther.value = "";
                 }
             });
         </script>
