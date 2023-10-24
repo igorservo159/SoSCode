@@ -36,20 +36,27 @@
                         </div>
                         <div class="card-body bg-warning-subtle">
                             <form>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Digite seu nome">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="Nome">
+                                    <label for="floatingInput">Nome</label>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="Digite seu e-mail">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingEmail" placeholder="E-mail">
+                                    <label for="floatingEmail">E-mail</label>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Crie uma senha">
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                                    <label for="floatingPassword">Senha</label>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Confirme a senha">
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirmar senha">
+                                    <label for="floatingConfirmPassword">Confirmar senha</label>
                                 </div>
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Cadastrar</button>
+                                </div>
+                                <div class="d-grid gap-2 mt-2">
+                                    <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Voltar</button>
                                 </div>
                             </form>
                         </div>

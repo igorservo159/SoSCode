@@ -36,11 +36,13 @@
                         </div>
                         <div class="card-body bg-warning-subtle">
                             <form>
-                                <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="E-mail">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id = "floatingInput" placeholder = "Digite seu e-mail">
+                                    <label for="floatingInput">E-mail</label>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Senha">
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id = "floatingPassword" placeholder = "Digite sua senha">
+                                    <label for="floatingPassword">Senha</label>
                                 </div>
                                 <div class="row">
                                     <div class="d-grid gap-2 col-6">
