@@ -34,11 +34,32 @@ class TicketService {
     }
 
     public function update(){
-
+        $query = "update tb_tickets
+                  set title = :title, category = :category, description = :description
+                  where id = :id";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':title', $this->ticket->__get('title'));
+        $stmt->bindValue(':category', $this->ticket->__get('category'));
+        $stmt->bindValue(':description', $this->ticket->__get('description'));
+        $stmt->bindValue(':id', $this->ticket->__get('id'));
+        return $stmt->execute();
     }
 
     public function delete(){
-        
+        $query = 'delete from tb_tickets where id = ?';
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(1, $this->ticket->__get('id'));
+        $stmt->execute();
+    }
+
+    public function conclude(){
+        $query = "update tb_tickets
+                  set id_status = ?
+                  where id = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(1, $this->ticket->__get('id_status'));
+        $stmt->bindValue(2, $this->ticket->__get('id'));
+        return $stmt->execute();
     }
 }
 

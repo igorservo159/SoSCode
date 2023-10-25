@@ -29,13 +29,11 @@
 
         <script>
             function edit(id, txt_title, txt_category, txt_description) {
-                // Crie um elemento form
                 let form = document.createElement('form');
-                form.action = '#';
+                form.action = "ticket_controller.php?acao=atualizar";
                 form.method = 'post';
                 form.className = 'row form-floating';
 
-                // Crie os campos de entrada para título, categoria e descrição
                 let inputTitle = createInput('title', 'Título', txt_title);
                 let inputCategory = createInput('category', 'Categoria', txt_category);
                 let inputDescription = createInput('description', 'Descrição', txt_description);
@@ -47,23 +45,64 @@
 
                 let button = document.createElement('button')
                 button.type = 'submit'
-                button.className = 'col-12 mt-2 btn btn-info'
+                button.className = 'col-12 ms-2 me-2 mt-2 btn btn-info'
                 button.innerHTML = 'Atualizar'
 
-                // Adicione os campos de entrada ao formulário
+                let cancelButton = document.createElement('button')
+                cancelButton.type = 'button'
+                cancelButton.className = 'col-12 ms-2 me-2 mt-2 btn btn-danger'
+                cancelButton.innerHTML = 'Cancelar'
+                cancelButton.onclick = function () {
+                    let ticket = document.getElementById('ticket_' + id);
+                    ticket.innerHTML = '';
+                    let textDiv = document.createElement('div');
+                    textDiv.className = 'col-10'
+                    textDiv.innerHTML = `
+                        <h5 class="card-title">${txt_title}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${txt_category}</h6>
+                        <p class="card-text">${txt_description}</p>
+                    `;
+                    let actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'd-grid col-2 gap-1';
+                    let completeButton = document.createElement('div');
+                    completeButton.className = 'btn btn-sm btn-info btn-block';
+                    completeButton.innerHTML = 'Concluir';
+                    completeButton.onclick = function(){
+                        conclude(id);
+                    }
+                    let editButton = document.createElement('div');
+                    editButton.className = 'btn btn-sm btn-warning btn-block';
+                    editButton.innerHTML = 'Editar';
+                    editButton.onclick = function(){
+                        edit(id, txt_title, txt_category, txt_description);
+                    };
+                    let deleteButton = document.createElement('div');
+                    deleteButton.className = 'btn btn-sm btn-danger btn-block';
+                    deleteButton.innerHTML = 'Deletar';
+                    deleteButton.onclick = function(){
+                        remove(id);
+                    };
+
+                    actionsDiv.appendChild(completeButton);
+                    actionsDiv.appendChild(editButton);
+                    actionsDiv.appendChild(deleteButton);
+                    ticket.appendChild(textDiv);
+                    ticket.appendChild(actionsDiv);
+                }
+                
+
                 form.appendChild(inputTitle);
                 form.appendChild(inputCategory);
                 form.appendChild(inputDescription);
                 form.appendChild(inputId)
                 form.appendChild(button)
+                form.appendChild(cancelButton);
 
-                // Adicione o formulário ao elemento ticket
                 let ticket = document.getElementById('ticket_' + id);
                 ticket.innerHTML = '';
                 ticket.appendChild(form);
             }
 
-            // Função para criar campos de entrada
             function createInput(name, label, value) {
                 let container = document.createElement('div');
                 container.className = 'col-12 mt-1';
@@ -85,8 +124,16 @@
                 return container;
             }
 
+            function remove(id){
+                location.href = 'query.php?acao=remover&id='+id;
+            }
+
+            function conclude(id){
+                location.href = 'query.php?acao=concluir&id='+id;
+            }
 
         </script>
+
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
@@ -115,15 +162,15 @@
                                             <p class="card-text"><?= $ticket->description ?></p>
                                         </div>
                                         <div class="d-grid col-2 gap-1">
-                                            <div class="btn btn-sm btn-info btn-block">Concluir</div>
-                                            <div class="btn btn-sm btn-warning btn-block" onclick="edit(<?=$ticket->id?>, '<?=$ticket->title?>', '<?=$ticket->category?>', '<?=$ticket->description?>')">Editar</div>
-                                            <div class="btn btn-sm btn-danger btn-block">Deletar</div>
+                                            <?php if($ticket->status == 'pendente'){?>
+                                                <div class="btn btn-sm btn-info btn-block" onclick="conclude(<?=$ticket->id?>)">Concluir</div>
+                                                <div class="btn btn-sm btn-warning btn-block" onclick="edit(<?=$ticket->id?>, '<?=$ticket->title?>', '<?=$ticket->category?>', '<?=$ticket->description?>')">Editar</div>
+                                            <?php } ?>
+                                            <div class="btn btn-sm btn-danger btn-block" onclick="remove(<?=$ticket->id?>)">Deletar</div>
                                         </div>
                                     </div>
                                 </div>
-                            <?php
-                            }
-                            ?>
+                            <?php } ?>
                             <div class="row mt-5">
                                 <div class="col-6">
                                     <button class="btn btn-warning btn-block" type="submit">Voltar</button>
