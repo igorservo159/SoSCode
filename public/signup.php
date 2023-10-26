@@ -35,30 +35,30 @@
                             Sign up
                         </div>
                         <div class="card-body bg-warning-subtle">
-                            <form>
+                            <form method="post" action="user_controller.php?acao=registrar">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Nome">
+                                    <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Nome" required>
                                     <label for="floatingInput">Nome</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingEmail" placeholder="E-mail">
+                                    <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="E-mail" required>
                                     <label for="floatingEmail">E-mail</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Senha" required>
                                     <label for="floatingPassword">Senha</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirmar senha">
+                                    <input type="password" name="passwordConfirm" class="form-control" id="floatingConfirmPassword" placeholder="Confirmar senha" required>
                                     <label for="floatingConfirmPassword">Confirmar senha</label>
                                 </div>
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Cadastrar</button>
                                 </div>
-                                <div class="d-grid gap-2 mt-2">
-                                    <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Voltar</button>
-                                </div>
                             </form>
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Voltar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

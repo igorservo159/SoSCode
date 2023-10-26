@@ -49,7 +49,7 @@
                                         <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Entrar</button>
                                     </div>
                                     <div class="d-grid gap-2 col-6">
-                                        <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Sign up</button>
+                                        <button class="btn btn-lg btn-outline-dark btn-block" type="button">Sign up</button>
                                     </div>
                                 </div>    
                             </form>
