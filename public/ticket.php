@@ -83,7 +83,7 @@
                                                 <button class="btn btn-lg btn-info btn-block" type="submit">Abrir</button>
                                             </div>
                                             <div class="d-grid gap-2 col-6">
-                                                <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                                                <button class="btn btn-lg btn-warning btn-block" type="button" onclick="back()">Voltar</button>
                                             </div>
                                         </div>
 
@@ -97,6 +97,10 @@
         </div>
 
         <script>
+            function back(){
+                window.location.href = "home.php";
+            }
+
             var category = document.getElementById("category");
             var otherCategory = document.getElementById("other-category");
             var inputOther = document.getElementById("input-other");

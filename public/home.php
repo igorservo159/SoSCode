@@ -18,7 +18,24 @@
                 background-repeat: no-repeat; 
                 background-position: center;
             }
+            .zoom-image {
+                transition: transform 0.2s;
+                cursor: pointer;
+            }
+
+            .zoom-image:hover {
+                transform: scale(1.2);
+            }
         </style>
+        <script>
+            function newTicket(){
+                window.location.href = "ticket.php";
+            }
+
+            function allTickets(){
+                window.location.href = "query.php";
+            }
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
@@ -40,7 +57,7 @@
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col d-flex justify-content-center">
-                                            <img src="imgs/sos.png" width="70" height="70">
+                                            <img src="imgs/sos.png" width="70" height="70" class="img-fluid zoom-image" onclick="newTicket()">
                                         </div>
                                         <div class="text-center">Abrir Ticket</div>
                                     </div>
@@ -48,7 +65,7 @@
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col d-flex justify-content-center">
-                                            <img src="imgs/search.png" width="70" height="70">
+                                            <img src="imgs/search.png" width="70" height="70" class="img-fluid zoom-image" onclick="allTickets()">
                                         </div>
                                         <div class="text-center">Consultar Ticket</div>
                                     </div>

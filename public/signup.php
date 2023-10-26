@@ -19,6 +19,11 @@
                 background-position: center;
             }
         </style>
+        <script>
+            function back(){
+                window.location.href = "index.php";
+            }
+        </script>
     </head>
     <body> 
         <nav class="navbar navbar-dark bg-dark">
@@ -27,6 +32,43 @@
                 SosCode
             </a>
         </nav>
+        
+        <?php if(isset($_GET['erro']) && $_GET['erro'] == 0 ){
+            ?>
+                <div class="bg-danger pt-2 text-white d-flex justify-content-center">
+                    <h5>Preencha todos os campos!</h5>
+                </div>
+            <?php
+        }    
+        ?>
+
+        <?php if(isset($_GET['erro']) && $_GET['erro'] == 1 ){
+            ?>
+                <div class="bg-danger pt-2 text-white d-flex justify-content-center">
+                    <h5>As senhas não coincidem!</h5>
+                </div>
+            <?php
+        }    
+        ?>
+
+        <?php if(isset($_GET['erro']) && $_GET['erro'] == 2 ){
+            ?>
+                <div class="bg-danger pt-2 text-white d-flex justify-content-center">
+                    <h5>O email já está em uso!</h5>
+                </div>
+            <?php
+        }    
+        ?>
+
+        <?php if(isset($_GET['erro']) && $_GET['erro'] == 3 ){
+            ?>
+                <div class="bg-danger pt-2 text-white d-flex justify-content-center">
+                    <h5>Ocorreu algum problema! Tente mais tarde.</h5>
+                </div>
+            <?php
+        }    
+        ?>
+
         <div class="container">    
             <div class="row">
                 <div class="card-cadastro">
@@ -57,12 +99,18 @@
                                 </div>
                             </form>
                             <div class="d-grid gap-2 mt-2">
-                                <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Voltar</button>
+                                <button class="btn btn-lg btn-outline-dark btn-block" type="button" onclick="back()">Voltar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            const currentURL = new URL(window.location.href);
+            currentURL.searchParams.delete('erro');
+
+            history.replaceState({}, document.title, currentURL.toString());
+        </script>
     </body>
 </html>

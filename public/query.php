@@ -132,6 +132,10 @@
                 location.href = 'query.php?acao=concluir&id='+id;
             }
 
+            function back(){
+                window.location.href = "home.php";
+            }
+
         </script>
 
     </head>
@@ -154,7 +158,7 @@
                         style = "max-height: 70vh;">
                             <?php
                             foreach($tickets as $index => $ticket){ ?>
-                                <div class="card mb-3 bg-light">
+                                <div class="card mt-2 bg-light">
                                     <div class="row card-body" id="ticket_<?=$ticket->id?>">
                                         <div class="col-10">
                                             <h5 class="card-title"><?= $ticket->title ?> (<?= $ticket->status ?>)</h5>
@@ -166,14 +170,14 @@
                                                 <div class="btn btn-sm btn-info btn-block" onclick="conclude(<?=$ticket->id?>)">Concluir</div>
                                                 <div class="btn btn-sm btn-warning btn-block" onclick="edit(<?=$ticket->id?>, '<?=$ticket->title?>', '<?=$ticket->category?>', '<?=$ticket->description?>')">Editar</div>
                                             <?php } ?>
-                                            <div class="btn btn-sm btn-danger btn-block" onclick="remove(<?=$ticket->id?>)">Deletar</div>
+                                            <div class="btn btn-sm btn-danger btn-block d-flex align-items-center justify-content-center" onclick="remove(<?=$ticket->id?>)">Deletar</div>
                                         </div>
                                     </div>
                                 </div>
                             <?php } ?>
-                            <div class="row mt-5">
-                                <div class="col-6">
-                                    <button class="btn btn-warning btn-block" type="submit">Voltar</button>
+                            <div class="row mt-4">
+                                <div class="col-2 d-grid gap-2">
+                                    <button class="btn btn-warning btn-block" type="button" onclick="back()">Voltar</button>
                                 </div>
                             </div>
                         </div>

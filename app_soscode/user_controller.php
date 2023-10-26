@@ -10,10 +10,10 @@ if($acao == 'registrar'){
     $passwordConfirm = $_POST['passwordConfirm'];
 
     if (empty($name) || empty($email) || empty($password) || empty($passwordConfirm)) {
-        echo "Por favor, preencha todos os campos.";
+        header('Location: signup.php?erro=0');
     } else {
         if($passwordConfirm != $password){
-            echo "As senhas não coincidem";
+            header('Location: signup.php?erro=1');
         }
         else{
             $connection = new Connection();
@@ -21,7 +21,7 @@ if($acao == 'registrar'){
             $query->bindValue(':email', $email);
             $query->execute();
             if ($query->fetch()) {
-                echo "O email já está em uso. Escolha outro.";
+                header('Location: signup.php?erro=2');
             } else {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
@@ -32,9 +32,9 @@ if($acao == 'registrar'){
                 $result = $query->execute();
     
                 if ($result) {
-                    echo "Registro bem-sucedido. <a href='index.php'>Faça login</a>.";
+                    header('Location: index.php?registro=1');
                 } else {
-                    echo "Ocorreu um erro durante o registro. Tente novamente.";
+                    header('Location: signup.php?erro=3');
                 }
             }
         }
