@@ -1,9 +1,14 @@
 {
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "523757f536bf77d828090f19dd92296a",
     "packages": [
         {
             "name": "firebase/php-jwt",
             "version": "v6.9.0",
-            "version_normalized": "6.9.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
@@ -30,9 +35,7 @@
                 "ext-sodium": "Support EdDSA (Ed25519) signatures",
                 "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
             },
-            "time": "2023-10-05T00:24:42+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Firebase\\JWT\\": "src"
@@ -64,12 +67,11 @@
                 "issues": "https://github.com/firebase/php-jwt/issues",
                 "source": "https://github.com/firebase/php-jwt/tree/v6.9.0"
             },
-            "install-path": "../firebase/php-jwt"
+            "time": "2023-10-05T00:24:42+00:00"
         },
         {
             "name": "twbs/bootstrap",
             "version": "v5.3.2",
-            "version_normalized": "5.3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
@@ -84,9 +86,7 @@
             "replace": {
                 "twitter/bootstrap": "self.version"
             },
-            "time": "2023-09-14T14:19:27+00:00",
             "type": "library",
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -117,9 +117,16 @@
                 "issues": "https://github.com/twbs/bootstrap/issues",
                 "source": "https://github.com/twbs/bootstrap/tree/v5.3.2"
             },
-            "install-path": "../twbs/bootstrap"
+            "time": "2023-09-14T14:19:27+00:00"
         }
     ],
-    "dev": true,
-    "dev-package-names": []
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
 }
