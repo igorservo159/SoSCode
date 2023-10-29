@@ -1,5 +1,6 @@
 <?php
 require "../app_soscode/connection.php";
+require "../app_soscode/auth.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -15,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result !==  false) {
         if (isset($result['pass']) && password_verify($password, $result['pass'])) {
             session_start();
-            $_SESSION['user_id'] = $id;
+            createToken($result['id']);
             header('Location: home.php');
             exit();
         } else{

@@ -1,3 +1,14 @@
+<?php
+
+if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
+    session_unset();
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -55,6 +66,15 @@
             ?>
                 <div class="bg-danger pt-2 text-white d-flex justify-content-center">
                     <h5>Algo deu errado. Tente mais tarde</h5>
+                </div>
+            <?php
+        }    
+        ?>
+        
+        <?php if(isset($_GET['erro']) && $_GET['erro'] == 3 ){
+            ?>
+                <div class="bg-danger pt-2 text-white d-flex justify-content-center">
+                    <h5>Sessão expirada</h5>
                 </div>
             <?php
         }    

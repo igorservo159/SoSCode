@@ -1,7 +1,32 @@
 <?php
 
-    $acao = 'recuperar';
-    require 'ticket_controller.php';
+require "../app_soscode/auth.php";
+
+session_start();
+
+if (isset($_SESSION['token'])) {
+    try {
+        $teste = verifyToken($_SESSION['token']);
+        $exp = $teste->exp;
+        $current_time = time();
+
+        if ($current_time > $exp) {
+            session_unset(); 
+            session_destroy(); 
+            header('Location: index.php?erro=3');
+            exit;
+        }
+    } catch (Exception $e) {
+        http_response_code(401); 
+        echo json_encode(array("message" => "Token inválido"));
+    }
+} else {
+    http_response_code(401); 
+    echo json_encode(array("message" => "Token ausente"));
+}
+
+$acao = 'recuperar';
+require 'ticket_controller.php';
 
 ?>
 
@@ -28,7 +53,16 @@
         </style>
 
         <script>
+            
+            function checkSessionExp() {
+                const current_time = Math.floor(Date.now() / 1000); // Obtenha o tempo atual em segundos
+                if (current_time > <?=$exp?>) {
+                    window.location.href = 'index.php?erro=3';
+                }
+            }
+
             function edit(id, txt_title, txt_category, txt_description) {
+                checkSessionExp();
                 let form = document.createElement('form');
                 form.action = "ticket_controller.php?acao=atualizar";
                 form.method = 'post';
@@ -125,14 +159,17 @@
             }
 
             function remove(id){
+                checkSessionExp();
                 location.href = 'query.php?acao=remover&id='+id;
             }
 
             function conclude(id){
+                checkSessionExp();
                 location.href = 'query.php?acao=concluir&id='+id;
             }
 
             function back(){
+                checkSessionExp();
                 window.location.href = "home.php";
             }
 

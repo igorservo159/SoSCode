@@ -1,3 +1,34 @@
+<?php
+
+require "../app_soscode/auth.php";
+
+session_start();
+
+if (isset($_SESSION['token'])) {
+    try {
+        $teste = verifyToken($_SESSION['token']);
+        $exp = $teste->exp;
+        $current_time = time();
+
+        if ($current_time > $exp) {
+            session_unset(); 
+            session_destroy(); 
+            header('Location: index.php?erro=3');
+            exit;
+        }
+    } catch (Exception $e) {
+        http_response_code(401); 
+        echo json_encode(array("message" => "Token inválido"));
+    }
+} else {
+    http_response_code(401); 
+    echo json_encode(array("message" => "Token ausente"));
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
