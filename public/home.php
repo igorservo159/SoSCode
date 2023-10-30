@@ -17,12 +17,16 @@ if (isset($_SESSION['token'])) {
             exit;
         }
     } catch (Exception $e) {
-        http_response_code(401); 
-        echo json_encode(array("message" => "Token inválido"));
+            session_unset(); 
+            session_destroy(); 
+            header('Location: index.php?erro=4');
+            exit;
     }
 } else {
-    http_response_code(401); 
-    echo json_encode(array("message" => "Token ausente"));
+    session_unset(); 
+    session_destroy(); 
+    header('Location: index.php?erro=4');
+    exit;
 }
 
 
@@ -88,7 +92,7 @@ if (isset($_SESSION['token'])) {
                         </div>
                         <div class="card-body bg-warning-subtle">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="row">
                                         <div class="col d-flex justify-content-center">
                                             <img src="imgs/sos.png" width="70" height="70" class="img-fluid zoom-image" onclick="newTicket()">
@@ -96,7 +100,7 @@ if (isset($_SESSION['token'])) {
                                         <div class="text-center">Abrir Ticket</div>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="row">
                                         <div class="col d-flex justify-content-center">
                                             <img src="imgs/search.png" width="70" height="70" class="img-fluid zoom-image" onclick="allTickets()">

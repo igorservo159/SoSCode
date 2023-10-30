@@ -80,6 +80,15 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
         }    
         ?>
 
+        <?php if(isset($_GET['erro']) && $_GET['erro'] == 4 ){
+            ?>
+                <div class="bg-danger pt-2 text-white d-flex justify-content-center">
+                    <h5>Rota bloqueada. Faça login!</h5>
+                </div>
+            <?php
+        }    
+        ?>
+
         <div class="container">    
             <div class="row">
                 <div class="card-login">

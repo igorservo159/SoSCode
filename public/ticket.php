@@ -17,12 +17,16 @@ if (isset($_SESSION['token'])) {
             exit;
         }
     } catch (Exception $e) {
-        http_response_code(401); 
-        echo json_encode(array("message" => "Token inválido"));
+            session_unset(); 
+            session_destroy(); 
+            header('Location: index.php?erro=4');
+            exit;
     }
 } else {
-    http_response_code(401); 
-    echo json_encode(array("message" => "Token ausente"));
+    session_unset(); 
+    session_destroy(); 
+    header('Location: index.php?erro=4');
+    exit;
 }
 
 
