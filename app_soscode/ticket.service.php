@@ -12,8 +12,9 @@ class TicketService {
 
 
     public function create(){
-        $query = 'insert into tb_tickets(title, category, description)values(:title, :category, :description)';
+        $query = 'insert into tb_tickets(id_user, title, category, description)values(:id_user, :title, :category, :description)';
         $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id_user', $this->ticket->__get('id_user'));
         $stmt->bindValue(':title', $this->ticket->__get('title'));
         $stmt->bindValue(':category', $this->ticket->__get('category'));
         $stmt->bindValue(':description', $this->ticket->__get('description'));
@@ -26,9 +27,13 @@ class TicketService {
                 t.id, s.status, t.title, t.category, t.description 
             from
                 tb_tickets as t
-                left join tb_status as s on (t.id_status = s.id)
+            left join 
+                tb_status as s on (t.id_status = s.id)
+            where
+                t.id_user = :id_user;
         ';
         $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id_user', $this->ticket->__get('id_user'));
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }

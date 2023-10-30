@@ -81,6 +81,8 @@ if (isset($_SESSION['token'])) {
                                 <div class="col">
                                     <form method="post" action="ticket_controller.php?acao=inserir">
 
+                                        <input type="hidden" name="id_user" value ="<?=$teste->id?>">
+
                                         <div class="mb-3">
                                             <label class="form-label">Título</label>
                                             <input name="title" type="text" class="form-control"

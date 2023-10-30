@@ -8,8 +8,8 @@ require "../app_soscode/connection.php";
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
 if($acao == 'inserir'){
-
     $ticket = new Ticket();
+    $ticket->__set('id_user',  $_POST['id_user']);
     $ticket->__set('title', $_POST['title']);
     if ($_POST['other-category'] == ""){
         $ticket->__set('category', $_POST['category']);
@@ -27,8 +27,8 @@ if($acao == 'inserir'){
     header('Location: ticket.php?inclusao=1');
 
 } else if($acao == 'recuperar'){
-    
     $ticket = new Ticket();
+    $ticket->__set('id_user', $teste->id);
     $connection = new Connection();
 
     $ticketService = new TicketService($connection, $ticket);
