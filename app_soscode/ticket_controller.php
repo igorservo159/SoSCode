@@ -1,7 +1,9 @@
 <?php
 
 require "../app_soscode/ticket.model.php";
+require "../app_soscode/response.model.php";
 require "../app_soscode/ticket.service.php";
+require "../app_soscode/response.service.php";
 require "../app_soscode/connection.php";
 
 
@@ -69,6 +71,46 @@ if($acao == 'inserir'){
     $ticketService->conclude();
 
     header('location: query.php');
+} else if($acao == 'recuperarPendentes'){
+    $ticket = new Ticket();
+    $connection = new Connection();
+
+    $ticketService = new TicketService($connection, $ticket);
+    $tickets = $ticketService->readAll();
+} else if($acao == 'responder'){
+    $response = new Response();
+    $response->__set('id_owner',  $_POST['id_owner']);
+    $response->__set('id_ticket',  $_POST['id_ticket']);
+    $response->__set('response',  $_POST['response']);
+
+    $connection = new Connection();
+
+    $responseService = new ResponseService($connection, $response);
+    $responseService->create();
+
+    header('Location: answer.php?resposta=1');
+} else if($acao == 'verRespostas'){
+    $response = new Response();
+    $response->__set('id_ticket',  $_GET['id']);
+
+    $connection = new Connection();
+
+    $responseService = new ResponseService($connection, $response);
+    $reponses = $responseService->read();
+
+} else if ($acao == 'aceitarResposta'){
+ 
+    $response2 = new Response();
+    $response2->__set('id', $_POST['id'])->__set('status', 2);
+
+    $connection = new Connection();
+
+    echo $_POST['id'];
+
+    $responseService = new ResponseService($connection, $response2);
+    $responseService->accept();
+
+    //header('Location: query.php?resposta=1');
 }
 
 

@@ -11,7 +11,7 @@ function createToken($id) {
 
     $token_payload = array(
         "id" => $id,
-        "exp" => time() + 1200
+        "exp" => time() + 3600
     );
 
     $jwt = Firebase\JWT\JWT::encode($token_payload, $key, 'HS256');

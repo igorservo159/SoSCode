@@ -73,6 +73,10 @@ if (isset($_SESSION['token'])) {
             function logout() {
                 window.location.href = 'index.php?logout=true';
             }
+
+            function answerTickets(){
+                window.location.href = 'answer.php';
+            }
         </script>
     </head>
     <body>
@@ -97,7 +101,7 @@ if (isset($_SESSION['token'])) {
                                         <div class="col d-flex justify-content-center">
                                             <img src="imgs/sos.png" width="70" height="70" class="img-fluid zoom-image" onclick="newTicket()">
                                         </div>
-                                        <div class="text-center">Abrir Ticket</div>
+                                        <div class="text-center">Novo Ticket</div>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -105,7 +109,15 @@ if (isset($_SESSION['token'])) {
                                         <div class="col d-flex justify-content-center">
                                             <img src="imgs/search.png" width="70" height="70" class="img-fluid zoom-image" onclick="allTickets()">
                                         </div>
-                                        <div class="text-center">Consultar Ticket</div>
+                                        <div class="text-center">Meus Tickets</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-center">
+                                            <img src="imgs/write.png" width="70" height="70" class="img-fluid zoom-image" onclick="answerTickets()">
+                                        </div>
+                                        <div class="text-center">Responder Tickets</div>
                                     </div>
                                 </div>
                             </div>

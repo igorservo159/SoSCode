@@ -72,7 +72,6 @@ if (isset($_SESSION['token'])) {
         }    
         ?>
 
-        
         <div class="container">
             <div class="row">
                 <div class="card-open-call">

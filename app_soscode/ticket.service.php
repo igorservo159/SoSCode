@@ -66,6 +66,24 @@ class TicketService {
         $stmt->bindValue(2, $this->ticket->__get('id'));
         return $stmt->execute();
     }
+
+    public function readall(){
+        $query = '
+            select 
+                t.id, s.status, t.title, t.category, t.description, u.name 
+            from
+                tb_tickets as t
+            left join 
+                tb_status as s on (t.id_status = s.id)
+            left join
+                tb_users as u on (t.id_user = u.id)
+            where
+                t.id_status = 1;
+        ';
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }
 
 ?>
